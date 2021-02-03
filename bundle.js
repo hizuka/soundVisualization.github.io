@@ -1,13 +1,12 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
-(function (Buffer){(function (){
 var request = require('request');
-var code = '25977e2dd6601684f288b008d6a1404c03cf7593'
-encodedCredential = Buffer.from(code).toString('base64')
+// var code = '25977e2dd6601684f288b008d6a1404c03cf7593'
+
 var options = {
 	url: 'https://api.github.com/repos/hizuka/HeartSound/contents/test_original?ref=main',
 	headers: {
 		'User-Agent': 'request',	
-		 Authorization:'token 25977e2dd6601684f288b008d6a1404c03cf7593'
+		 Authorization:'token 26b4f5c47fc603' + '7b3864b316cc4e6e58b93289bc'
 		
 
 	}
@@ -84,8 +83,7 @@ function getUrl() {
 //请求开始
 getUrl()
 
-}).call(this)}).call(this,require("buffer").Buffer)
-},{"buffer":239,"request":114}],2:[function(require,module,exports){
+},{"request":114}],2:[function(require,module,exports){
 'use strict';
 
 var compileSchema = require('./compile')

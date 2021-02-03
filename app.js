@@ -129,12 +129,12 @@ document.addEventListener('DOMContentLoaded', function() {
 		waveColor: '#428bca',
 		progressColor: '#000000',
 		height: 120,
-		xhr: {
-			requestHeaders: [{
-				key: "Authorization",
-				value: 'token 25977e2dd6601684f288b008d6a1404c03cf7593'
-			}]
-		},
+		// xhr: {
+		// 	requestHeaders: [{
+		// 		key: "Authorization",
+		// 		value: 'token 25977e2dd6601684f288b008d6a1404c03cf7593'
+		// 	}]
+		// },
 		barWidth: 0,
 		barHeight: 5,
 		backend: 'MediaElement',
@@ -247,12 +247,12 @@ document.addEventListener('DOMContentLoaded', function() {
 		waveColor: '#428bca',
 		progressColor: '#000000',
 		height: 120,
-		xhr: {
-			requestHeaders: [{
-				key: "Authorization",
-				value: "token " + "25977e2dd6601684f288b008d6a1404c03cf7593"
-			}]
-		},
+		// xhr: {
+		// 	requestHeaders: [{
+		// 		key: "Authorization",
+		// 		value: "token " + "25977e2dd6601684f288b008d6a1404c03cf7593"
+		// 	}]
+		// },
 		barWidth: 0,
 		barHeight: 5,
 		backend: 'MediaElement',
@@ -465,7 +465,7 @@ document.addEventListener('click', function(e) {
 			dataType: 'json',
 			headers: {
 				'User-Agent': 'request',
-				Authorization: 'token 25977e2dd6601684f288b008d6a1404c03cf7593'
+				Authorization: 'token 26b4f5c47fc603' + '7b3864b316cc4e6e58b93289bc'
 
 			},
 			success: function(data) {
@@ -500,7 +500,7 @@ document.addEventListener('click', function(e) {
 			dataType: 'json',
 			headers: {
 				'User-Agent': 'request',
-				Authorization: 'token 25977e2dd6601684f288b008d6a1404c03cf7593'
+				Authorization: 'token 26b4f5c47fc603' + '7b3864b316cc4e6e58b93289bc'
 
 			},
 			beforeSend: function(){
