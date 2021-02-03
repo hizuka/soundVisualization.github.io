@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Heart Sound Visualization</title>
+
+		<link href="data:image/gif;" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap -->
+		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+
+		<link rel="stylesheet" href="examlpe/css/style.css" />
+		<link rel="stylesheet" href="examlpe/css/ribbon.css" />
+		<link rel="screenshot" itemprop="screenshot" href="https://katspaugh.github.io/wavesurfer.js/example/screenshot.png" />
+
+		<!-- wavesurfer.js -->
+		<script src="dist/wavesurfer.min.js"></script>
+		<script src="dist/plugin/wavesurfer.timeline.js"></script>
+		<script src="dist/plugin/wavesurfer.regions.js"></script>
+
+		<!-- App -->
+
+		<!-- <script src="gitfile.js"></script> -->
+		<!-- <script src="file.js"></script> -->
+		<!-- <script src="bundle2.js"></script> -->
+		<script src="bundle.js"></script>
+		<script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
+
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="header">
+				<ul class="nav nav-pills pull-right">
+					<li><a href="/"><i class="glyphicon glyphicon-home"></i></a></li>
+				</ul>
+
+				<h1 itemprop="name">Heart Sound Visualization</h1>
+				<!-- <h3 id="source">source</h3> -->
+				<div id="source">current source</div>
+			</div>
+
+			<div id="demo">
+				<!-- wavesurfer original -->
+				<div class="row">
+					<!-- <div class="col-sm-10"> -->
+					<div>
+						<div id="waveform1">
+							<!-- Here be waveform -->
+						</div>
+						<div id="timeline1"></div>
+					</div>
+
+					<div>
+						<button class="btn btn-success btn-block" id="playPause1">
+							<span id="play1">
+								<i class="glyphicon glyphicon-play"></i>
+								original-Play
+							</span>
+							<span id="pause1" style="display: none">
+								<i class="glyphicon glyphicon-pause"></i>
+								original-Pause
+							</span>
+						</button>
+
+					</div>
+					<div class="row">
+
+
+						<div class="col-sm-1">
+							<i class="glyphicon glyphicon-zoom-in"></i>
+						</div>
+
+						<div class="col-sm-3">
+							<input data-action="zoom" type="range" min="20" max="5000" value="0" style="width: 100%" />
+						</div>
+
+						<div class="col-sm-1">
+							<i class="glyphicon glyphicon-zoom-out"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- wavesurfer edited -->
+			<div class="row">
+				<!-- <div class="col-sm-10"> -->
+				<div>
+					<div id="waveform2">
+						<!-- Here be waveform -->
+					</div>
+					<div id="timeline2"></div>
+				</div>
+
+
+				<div >
+					<button class="btn btn-success btn-block" id="playPause2">
+						<span id="play2">
+							<i class="glyphicon glyphicon-play"></i>
+							edited-Play
+						</span>
+
+						<span id="pause2" style="display: none">
+							<i class="glyphicon glyphicon-pause"></i>
+							edited-Pause
+						</span>
+						
+					</button>
+					<label for="inputfield" id="searchtitle" style="font-size:1em;">open original audio
+					    <input id='input1' type="file" class="btn btn-success btn-block" value="phonenumber"></input>
+					    <audio controls id="myAudio1" style='display: none' autoplay></audio>
+					</label>
+					<label for="inputfield" id="searchtitle" style="font-size:1em;">open edited audio
+					    <input id='input2'type="file" class="btn btn-success btn-block" value="phonenumber"></input>
+					    <audio controls id="myAudio2" style='display: none' autoplay></audio>
+					</label>
+					<button class="btn btn-info play-quarterx" data-action="play-quarterx">0.25x</button>
+					<button class="btn btn-info play-halfx" data-action="play-halfx">0.5x</button>
+					<button class="btn btn-info play-75x" data-action="play-1x">0.75x</button>
+					<button class="btn btn-info play-1x" data-action="play-2x">1.0x</button>
+					<!-- <div class="row">
+						<br>Volume:<br />
+						<input id="volume" type="range" min="0" max="200" value="100" step="1">
+					</div> -->
+					<!-- <input type="file">
+					<audio controls id="myAudio2" autoplay></audio> -->
+
+
+				</div>
+			</div>
+
+		</div>
+		</div>
+
+
+		<div class="list-group" id="playlist" style=" overflow:scroll;height:300px;">
+			<!-- https://raw.githubusercontent.com/hizuka/HeartSound/main/test_original/5_apex_1.wav -->
+			<!-- <a href="https://raw.githubusercontent.com/hizuka/HeartSound/main/test_original/3_apex_1.wav" class="list-group-item"> -->
+			<!-- <a href="../edited/32_eko_1_edited.wav" class="list-group-item"> -->
+			<!-- <i class="glyphicon glyphicon-play"></i>
+                        czskamaarù – Trou
+                        <span class="badge">0:21</span>
+                    </a> -->
+
+
+
+		</div>
+		</div>
+
+		</div>
+		<!-- <script src="bundle2.js"></script> -->
+		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+		<script src="app.js"></script>
+
+
+
+	</body>
+	<!-- <div id='loading' style='display: none'><img src="loading.gif" title="Loading" /></div> -->
+<!-- 	<div class="waitpage" id="waitpage" style="display: none;">
+	    <div class="waitpage-box">
+	        <p>
+	            <img alt="(Loading)" src="loading.gif">
+	            <span>Please Wait...</span>
+	        </p>
+	    </div>
+	</div> -->
+
+</html>
