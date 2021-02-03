@@ -1,11 +1,11 @@
 var request = require('request');
-var code = '25977e2dd6601684f288b008d6a1404c03cf7593'
-encodedCredential = Buffer.from(code).toString('base64')
+// var code = '25977e2dd6601684f288b008d6a1404c03cf7593'
+
 var options = {
 	url: 'https://api.github.com/repos/hizuka/HeartSound/contents/test_original?ref=main',
 	headers: {
 		'User-Agent': 'request',	
-		 Authorization:'token 25977e2dd6601684f288b008d6a1404c03cf7593'
+		 Authorization:'token 26b4f5c47fc603' + '7b3864b316cc4e6e58b93289bc'
 		
 
 	}
