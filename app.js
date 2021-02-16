@@ -139,19 +139,19 @@ document.addEventListener('DOMContentLoaded', function() {
 		barHeight: 5,
 		backend: 'MediaElement',
 		plugins: [
-			WaveSurfer.regions.create({
-				regions: [{
-						start: 0,
-						end: 5,
-						color: 'hsla(400, 100%, 30%, 0.1)'
-					},
-					{
-						start: 10,
-						end: 100,
-						color: 'hsla(200, 50%, 70%, 0.1)'
-					}
-				]
-			}),
+			// WaveSurfer.regions.create({
+			// 	regions: [{
+			// 			start: 0,
+			// 			end: 5,
+			// 			color: 'hsla(400, 100%, 30%, 0.1)'
+			// 		},
+			// 		{
+			// 			start: 10,
+			// 			end: 100,
+			// 			color: 'hsla(200, 50%, 70%, 0.1)'
+			// 		}
+			// 	]
+			// }),
 			WaveSurfer.timeline.create({
 				container: '#timeline1',
 				formatTimeCallback: formatTimeCallback,
@@ -186,6 +186,13 @@ document.addEventListener('DOMContentLoaded', function() {
 		wavesurfer1.playPause();
 		// wavesurfer2.playPause();
 		// wavesurfer2.setMute(true);
+		if (document.querySelector('#issync').innerHTML == "sync")
+		{
+			// alert("喵");
+			wavesurfer2.setMute(true);
+			wavesurfer2.playPause();
+			
+		}
 	});
 
 	// Toggle play/pause text
@@ -257,19 +264,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		barHeight: 5,
 		backend: 'MediaElement',
 		plugins: [
-			WaveSurfer.regions.create({
-				regions: [{
-						start: 0,
-						end: 5,
-						color: 'hsla(400, 100%, 30%, 0.1)'
-					},
-					{
-						start: 10,
-						end: 100,
-						color: 'hsla(200, 50%, 70%, 0.1)'
-					}
-				]
-			}),
+			
 			WaveSurfer.timeline.create({
 				container: '#timeline2',
 				formatTimeCallback: formatTimeCallback,
@@ -300,10 +295,18 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
 	let playPause = document.querySelector('#playPause2');
 	playPause.addEventListener('click', function() {
+		
 		wavesurfer2.setMute(false);
 		wavesurfer2.playPause();
 		// wavesurfer1.playPause();
 		// wavesurfer1.setMute(true);
+		if (document.querySelector('#issync').innerHTML == "sync")
+		{
+			// alert("喵");
+			wavesurfer1.setMute(true);
+			wavesurfer1.playPause();
+			
+		}
 	});
 
 	// Toggle play/pause text
@@ -382,6 +385,18 @@ document.addEventListener('DOMContentLoaded', function() {
 	//     };
 	//   volumeInput.addEventListener('input', onChangeVolume);
 	//   volumeInput.addEventListener('change', onChangeVolume);
+	//sync control
+	$('.btn-sync').on('click', function() {
+		
+		document.querySelector('#issync').innerHTML = "sync";
+		// alert("sync");
+	
+	});
+	$('.btn-async').on('click', function() {
+		// alert("async");
+		document.querySelector('#issync').innerHTML = "async";
+	
+	});
 	
 	var $audio1 = $('#myAudio1');
 	$('#input1').on('change', function(e) {
