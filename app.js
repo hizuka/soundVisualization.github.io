@@ -139,6 +139,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		barHeight: 5,
 		backend: 'MediaElement',
 		plugins: [
+			// WaveSurfer.regions.create(),
 			// WaveSurfer.regions.create({
 			// 	regions: [{
 			// 			start: 0,
@@ -226,9 +227,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	// });
 
 	// Play on audio load
-	// wavesurfer.on('ready', function() {
-	//     wavesurfer.play();
-	// });
+	 
 
 	wavesurfer1.on('error', function(e) {
 		console.warn(e);
@@ -242,7 +241,15 @@ document.addEventListener('DOMContentLoaded', function() {
 	// Load the first track
 	// setCurrentSong(currentTrack);
 
-
+wavesurfer1.on('ready', function() {
+	     wavesurfer1.addRegion({
+	     			start: 6,
+	     			end: 8,
+	     			drag: false,
+					resize: false,
+	     			color: 6%2==0?'rgba(0,0,128,.1)':'rgba(0,128,0,.1)'
+	     		});
+	 });
 
 });
 
@@ -254,6 +261,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		waveColor: '#428bca',
 		progressColor: '#000000',
 		height: 120,
+		normalize: true,
 		// xhr: {
 		// 	requestHeaders: [{
 		// 		key: "Authorization",
@@ -264,7 +272,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		barHeight: 5,
 		backend: 'MediaElement',
 		plugins: [
-			
+			WaveSurfer.regions.create(),
 			WaveSurfer.timeline.create({
 				container: '#timeline2',
 				formatTimeCallback: formatTimeCallback,
@@ -345,9 +353,20 @@ document.addEventListener('DOMContentLoaded', function() {
 	// });
 
 	// Play on audio load
-	// wavesurfer.on('ready', function() {
-	//     wavesurfer.play();
-	// });
+	wavesurfer2.on('ready', function() {
+		for (var i=0;i<segments.length;i++) {
+				wavesurfer2.addRegion({
+					start: segments[i].start,
+					end: segments[i].end,
+					drag: false,
+					resize: false,
+					color: segments[i].color=='red'?'rgba(0,0,128,.1)':'rgba(0,128,0,.1)'
+				});
+			}
+		
+		
+	    
+	});
 
 	wavesurfer2.on('error', function(e) {
 		console.warn(e);
@@ -446,12 +465,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 // }
+let segments;
 
 function hasClass(elem, className) {
 	return elem.className.split(' ').indexOf(className) > -1;
 }
 
 document.addEventListener('click', function(e) {
+	
 	if (hasClass(e.target, 'list-group-item')) {
 		event.preventDefault(); //stop redirection by href
 		
@@ -531,6 +552,8 @@ document.addEventListener('click', function(e) {
 				// console.log(typeof snd);
 				// snd.play();
 				wavesurfer2.load(snd2);
+				wavesurfer2.clearRegions();
+				
 
 			},
 			error: function(XMLHttpRequest, textStatus, errorThrown) {
@@ -539,6 +562,39 @@ document.addEventListener('click', function(e) {
 			},
 			complete: function(XMLHttpRequest, status) {
 				 $('#loading').hide();
+				console.log(XMLHttpRequest.status);
+				// console.log((JSON.stringify(XMLHttpRequest)));
+			} // 请求完成后最终执行参数
+		});
+		//request json file
+		// var name_edited = name_orginal.split('.')[0];
+		href_json = 'https://api.github.com/repos/hizuka/HeartSound/contents/json/'+'processed_'+name_edited +'_edited.json';
+		console.log(href_json)
+		$.ajax({
+			url: href_json,
+			type: 'get',
+			dataType: 'json',
+			headers: {
+				'User-Agent': 'request',
+				Authorization: 'token 26b4f5c47fc603' + '7b3864b316cc4e6e58b93289bc'
+		
+			},
+			success: function(data) {
+				var body3 = JSON.stringify(data)
+				var info3 = JSON.parse(body3);
+				var decodedStringAtoB = atob(info3.content);
+				// alert(decodedStringAtoB);
+				 segments = JSON.parse(decodedStringAtoB);
+				// alert(segments[0].start);
+
+		
+			},
+			error: function(XMLHttpRequest, textStatus, errorThrown) {
+				console.log(XMLHttpRequest.status);
+				console.log(XMLHttpRequest.readyState);
+			},
+			complete: function(XMLHttpRequest, status) {
+		
 				console.log(XMLHttpRequest.status);
 				// console.log((JSON.stringify(XMLHttpRequest)));
 			} // 请求完成后最终执行参数
