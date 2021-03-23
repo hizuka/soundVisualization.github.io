@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		barHeight: 5,
 		backend: 'MediaElement',
 		plugins: [
-			// WaveSurfer.regions.create(),
+			WaveSurfer.regions.create(),
 			// WaveSurfer.regions.create({
 			// 	regions: [{
 			// 			start: 0,
@@ -228,7 +228,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	// Play on audio load
 	 
-
+    // Play on audio load
+    wavesurfer1.on('ready', function() {
+		wavesurfer1.clearRegions()
+    	for (var i=0;i<segments.length;i++) {
+    			wavesurfer1.addRegion({
+    				start: segments[i].start,
+    				end: segments[i].end,
+    				drag: false,
+    				resize: false,
+    				color: segments[i].color=='red'?'rgba(0,0,128,.1)':'rgba(0,128,0,.1)'
+    			});
+    			
+    		}
+    	
+    	
+        
+    });
 	wavesurfer1.on('error', function(e) {
 		console.warn(e);
 	});
@@ -241,15 +257,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	// Load the first track
 	// setCurrentSong(currentTrack);
 
-wavesurfer1.on('ready', function() {
-	     wavesurfer1.addRegion({
-	     			start: 6,
-	     			end: 8,
-	     			drag: false,
-					resize: false,
-	     			color: 6%2==0?'rgba(0,0,128,.1)':'rgba(0,128,0,.1)'
-	     		});
-	 });
+
 
 });
 
@@ -354,6 +362,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	// Play on audio load
 	wavesurfer2.on('ready', function() {
+		wavesurfer2.clearRegions()
 		for (var i=0;i<segments.length;i++) {
 				wavesurfer2.addRegion({
 					start: segments[i].start,
@@ -362,6 +371,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					resize: false,
 					color: segments[i].color=='red'?'rgba(0,0,128,.1)':'rgba(0,128,0,.1)'
 				});
+				
 			}
 		
 		
